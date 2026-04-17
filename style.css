@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
 
-
 :root {
    --cor-de-fundo: #1E1E1E;
    --verde: #6FFF57;
@@ -10,15 +9,11 @@
    --texto-fundo: rgba(58, 55, 94, 0.3);
 }
 
-
 body {
    background-color: var(--cor-de-fundo);
    color: var(--branco);
    font-family: 'Chakra Petch', sans-serif;
 }
-
-
-
 
 .conteudo-principal {
    display: flex;
@@ -30,19 +25,34 @@ body {
    margin: 0 auto;
 }
 
+.titul<!DOCTYPE html>
+<html lang="pt-br">
 
-.titulo-principal {
-   text-align: left;
-   width: 100%;
-   font-size: 32px;
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Meus objetivos do ano</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+   <section class="conteudo-principal">
+       <h2 class="titulo-principal">Meus Objetivos do ano<span>_</span></h2>
+       <div class="botoes">
+           <button class="botao">Cursos na Alura</button>
+           <button class="botao">Criar projetos em Javascript</button>
+           <button class="botao">Criar um portfolio</button>
+           <button class="botao">Atualizar meu currículo</button>
+       </div>
+   </section>
+</body>
+
+
+</html>
+or: var(--verde);
 }
-
-
-.titulo-principal span {
-   color: var(--verde);
-}
-
-
 .botao {
    font-family: "Chakra Petch", sans-serif;
    background-color: var(--botao-inativo);
@@ -59,15 +69,20 @@ body {
    border-top: none;
 }
 
-
 .botao:first-child {
    border-radius: 40px 40px 0 0;
    }
    .botoes {
    display: block;
    }
+.ativo{
+   background-color: var(--botao-ativo);
+   border-bottom: 4px solid var(--verde);
+}
+
    @media screen and (mid-width: 768px){
    }
+
        .botoes{
    display:flex;
    }
