@@ -1,96 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
 
 :root {
-   --cor-de-fundo: #1E1E1E;
-   --verde: #6FFF57;
-   --branco: #FFFFFF;
-   --botao-ativo: #3A375E;
-   --botao-inativo: rgba(58, 55, 94, 0.5);
-   --texto-fundo: rgba(58, 55, 94, 0.3);
+  --cor-de-fundo: #1E1E1E;
+  --verde: #6FFF57;
+  --branco: #FFFFFF;
+  --roxo: #3A375E;
+  --texto-fundo: rgba(58, 55, 94, 0.3);
 }
 
 body {
-   background-color: var(--cor-de-fundo);
-   color: var(--branco);
-   font-family: 'Chakra Petch', sans-serif;
+  margin: 0;
+  font-family: 'Chakra Petch', sans-serif;
+  background-color: var(--cor-de-fundo);
+  color: var(--branco);
 }
 
 .conteudo-principal {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   max-width: 1200px;
-   width: 100%;
-   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-.titul<!DOCTYPE html>
-<html lang="pt-br">
-
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Meus objetivos do ano</title>
-   <link rel="stylesheet" href="style.css">
-</head>
-
-
-<body>
-   <section class="conteudo-principal">
-       <h2 class="titulo-principal">Meus Objetivos do ano<span>_</span></h2>
-       <div class="botoes">
-           <button class="botao">Cursos na Alura</button>
-           <button class="botao">Criar projetos em Javascript</button>
-           <button class="botao">Criar um portfolio</button>
-           <button class="botao">Atualizar meu currículo</button>
-       </div>
-   </section>
-</body>
-
-
-</html>
-or: var(--verde);
+.titulo-principal {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
 }
+
+/* BOTÕES */
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
 .botao {
-   font-family: "Chakra Petch", sans-serif;
-   background-color: var(--botao-inativo);
-   color: var(--branco);
-   display: flex;
-   justify-content: center;
-   padding: 1em;
-   font-size: 18px;
-   align-items: center;
-   width: 100%;
-   border-bottom: 4px solid var(--botao-ativo);
-   border-left: 2px solid var(--botao-ativo);
-   border-right: 2px solid var(--botao-ativo);
-   border-top: none;
+  background-color: var(--roxo);
+  color: var(--branco);
+  border: none;
+  padding: 12px 34px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  flex: 1;
+  position: relative;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.botao:first-child {
-   border-radius: 40px 40px 0 0;
-   }
-   .botoes {
-   display: block;
-   }
-.ativo{
-   background-color: var(--botao-ativo);
-   border-bottom: 4px solid var(--verde);
+.botao:hover {
+  transform: translateY(-2px);
 }
 
-   @media screen and (mid-width: 768px){
-   }
+/* FITA VERDE ABAIXO DO BOTÃO ATIVO */
+.botao.ativo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--verde);
+  border-radius: 0 0 10px 10px;
+}
 
-       .botoes{
-   display:flex;
-   }
-  
-   .botao:first-child {
-   border-radius: 40px 0 0 0;
-   }
- 
-   .botao:last-child{
-   border-radius: 0 40px 0 0;
-   }
+/* ÁREA DE TEXTO DAS ABAS */
+.abas-textos {
+  background-color: var(--roxo);
+  padding: 30px;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: -4px; /* para encaixar com a fitinha */
+}
+
+.aba-conteudo {
+  display: none;
+}
+
+.aba-conteudo.ativo {
+  display: block;
+}
+
+.aba-conteudo h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.aba-conteudo h4 {
+  margin-top: 10px;
+  font-weight: normal;
+  color: #CCC;
+}
+
+/* RESPONSIVO */
+@media screen and (max-width: 600px) {
+  .botoes {
+    flex-direction: column;
+  }
+}
