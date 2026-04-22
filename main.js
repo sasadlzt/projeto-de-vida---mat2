@@ -1,12 +1,14 @@
-const botoes = document.querySelectorAll(".botao");
-console.log(botoes);
+const botoes = document.querySelectorAll('.botao');
+const abas = document.querySelectorAll('.aba-conteudo');
 
-for(let i=0;i <botoes.length;i++){
-    botoes[i].onclick = function (){
-      for(let j=0;j<botoes.length;j++){
-        botoes[j].classicList.remove("ativo");
-      } 
-      botoes[i].classicList.add("ativo"); 
-    }
-    console.log();
-}
+botoes.forEach((botao, index) => {
+  botao.addEventListener('click', () => {
+    // Remove ativo de todos
+    botoes.forEach(b => b.classList.remove('ativo'));
+    abas.forEach(a => a.classList.remove('ativo'));
+
+    // Adiciona ativo ao clicado
+    botao.classList.add('ativo');
+    abas[index].classList.add('ativo');
+  });
+});
