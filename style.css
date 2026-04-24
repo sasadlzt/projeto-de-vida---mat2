@@ -111,3 +111,31 @@ body {
     flex-direction: column;
   }
 }
+
+.contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* cada bloco (dias, horas, min, seg) */
+.contador-digito {
+  padding: 0 16px;
+  text-align: center;
+  min-width: 100px;
+}
+
+/* número grande */
+.contador-digito-numero {
+  font-size: 70px;
+  margin: 0;
+}
+
+/* texto embaixo */
+.contador-digito-texto {
+  color: var(--verde);
+  font-size: 18px;
+  margin: 0;
+}
