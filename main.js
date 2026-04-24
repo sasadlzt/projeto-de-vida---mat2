@@ -1,31 +1,17 @@
 const botoes = document.querySelectorAll('.botao');
 const abas = document.querySelectorAll('.aba-conteudo');
-const contadores = document.querySelectorAll('.contador');
 
-// tempo atual
-const agora = new Date();
-
-// tempos (modelo do professor)
-const temposObjetivos = [
-  new Date(agora.getTime() + 62 * 24 * 60 * 60 * 1000),
-  new Date(agora.getTime() + 123 * 24 * 60 * 60 * 1000),
-  new Date(agora.getTime() + 148 * 24 * 60 * 60 * 1000),
-  new Date(agora.getTime() + 181 * 24 * 60 * 60 * 1000)
+// tempos dos objetivos
+const tempos = [
+  new Date("2026-06-30T00:00:00"),
+  new Date("2026-08-30T00:00:00"),
+  new Date("2026-10-30T00:00:00"),
+  new Date("2026-12-31T00:00:00")
 ];
 
-// calcula tempo restante
 function calculaTempo(tempoObjetivo) {
-  const agora = new Date();
-  const tempoFinal = tempoObjetivo - agora;
-
-  if (tempoFinal <= 0) {
-    return `
-      <div class="contador-digito">
-        <p class="contador-digito-numero">0</p>
-        <p class="contador-digito-texto">Finalizado</p>
-      </div>
-    `;
-  }
+  let agora = new Date();
+  let tempoFinal = tempoObjetivo - agora;
 
   let segundos = Math.floor(tempoFinal / 1000);
   let minutos = Math.floor(segundos / 60);
@@ -36,36 +22,30 @@ function calculaTempo(tempoObjetivo) {
   minutos %= 60;
   horas %= 24;
 
-  return `
-    <div class="contador-digito">
-      <p class="contador-digito-numero">${dias}</p>
-      <p class="contador-digito-texto">dias</p>
-    </div>
-    <div class="contador-digito">
-      <p class="contador-digito-numero">${horas}</p>
-      <p class="contador-digito-texto">horas</p>
-    </div>
-    <div class="contador-digito">
-      <p class="contador-digito-numero">${minutos}</p>
-      <p class="contador-digito-texto">min</p>
-    </div>
-    <div class="contador-digito">
-      <p class="contador-digito-numero">${segundos}</p>
-      <p class="contador-digito-texto">seg</p>
-    </div>
-  `;
-}
-
-// atualiza todos os contadores
-function atualizaCronometro() {
-  for (let i = 0; i < contadores.length; i++) {
-    contadores[i].innerHTML = calculaTempo(temposObjetivos[i]);
+  if (tempoFinal > 0) {
+    return [dias, horas, minutos, segundos];
+  } else {
+    return [0, 0, 0, 0];
   }
 }
 
-// inicia cronômetro
-atualizaCronometro();
-setInterval(atualizaCronometro, 1000);
+function atualizaCronometro() {
+  for (let i = 0; i < tempos.length; i++) {
+    let tempo = calculaTempo(tempos[i]);
+
+    document.getElementById(`dias${i}`).textContent = tempo[0];
+    document.getElementById(`horas${i}`).textContent = tempo[1];
+    document.getElementById(`min${i}`).textContent = tempo[2];
+    document.getElementById(`seg${i}`).textContent = tempo[3];
+  }
+}
+
+function comecaCronometro() {
+  atualizaCronometro();
+  setInterval(atualizaCronometro, 1000);
+}
+
+comecaCronometro();
 
 // troca de abas
 botoes.forEach((botao, index) => {
